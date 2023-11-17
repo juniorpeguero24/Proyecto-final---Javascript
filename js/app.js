@@ -14,12 +14,7 @@ function mostrarProductos() {
   alert("Productos disponibles:");
   productos.forEach((producto) =>
     alert(
-      "ID: " +
-        producto.id +
-        " Nombre: " +
-        producto.nombre +
-        " Precio: $" +
-        producto.precio
+      `ID: ${producto.id} Nombre: ${producto.nombre} Precio: $${producto.precio}`
     )
   );
 }
@@ -36,9 +31,7 @@ function agregarAlCarrito() {
   if (productoSeleccionado) {
     const cantidad = parseInt(
       prompt(
-        "¿Cuánt@s " +
-          productoSeleccionado.nombre +
-          " deseas agregar al carrito?"
+        `¿Cuantos ${productoSeleccionado.nombre} deseas agregar al carrito?`
       )
     );
 
@@ -46,11 +39,7 @@ function agregarAlCarrito() {
       carrito.push({ ...productoSeleccionado, cantidad });
       totalCompra += productoSeleccionado.precio * cantidad;
       alert(
-        "Se agregaron " +
-          cantidad +
-          " " +
-          productoSeleccionado.nombre +
-          " al carrito."
+        `Se agregar ${cantidad} ${productoSeleccionado.nombre} al carrito.`
       );
     } else {
       alert("Cantidad no válida. Introduce un número mayor que cero.");
@@ -66,16 +55,10 @@ function verCarrito() {
   alert("Carrito de compras:");
   carrito.forEach((producto) => {
     alert(
-      producto.nombre +
-        " x" +
-        producto.cantidad +
-        " - $" +
-        producto.precio +
-        "*" +
-        producto.cantidad
+      `${producto.nombre} x ${producto.cantidad} - $${producto.precio}*${producto.cantidad}`
     );
   });
-  alert("Total: $" + totalCompra);
+  alert(`Total: $${totalCompra}`);
 }
 
 // Función principal
@@ -94,7 +77,7 @@ function comprarProductos() {
         verCarrito();
         break;
       case "3":
-        alert("Compra realizada. Total: $" + totalCompra);
+        alert(`Compra realizada. Total: $${totalCompra}`);
         return;
       case "4":
         alert("Gracias por visitar nuestra tienda.");
