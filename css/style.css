@@ -12,13 +12,18 @@ header {
 }
 
 main {
+  align-content: center;
+  text-align: center;
+}
+
+#productos-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 20px;
 }
 
-.producto {
+#productos-container .product-card {
   width: 200px;
   border: 1px solid #ccc;
   margin: 10px;
@@ -27,7 +32,7 @@ main {
   background-color: #f9f9f9;
 }
 
-.producto img {
+#productos-container .product-card img {
   max-width: 100%;
 }
 
@@ -35,7 +40,52 @@ button {
   background-color: #333;
   color: #fff;
   border: none;
-  padding: 5px 10px;
+  padding: 10px;
   cursor: pointer;
   margin-top: 10px;
+}
+
+#carrito-container {
+  align-content: center;
+  width: auto;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.eliminar {
+  background-color: red;
+  border-radius: 3rem;
+  padding: 0.2rem;
+}
+
+/* FORMULARIO */
+.container {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  background: radial-gradient(
+    circle,
+    rgba(232, 194, 44, 1) 0%,
+    rgba(143, 119, 29, 1) 50%,
+    rgba(255, 222, 89, 1) 100%
+  );
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input {
+  width: 20%;
+  padding: 10px;
+  margin-bottom: 10px;
 }
