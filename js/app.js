@@ -65,11 +65,11 @@ function iniciaProductos() {
     let productCard = document.createElement("div");
     productCard.className = "product-card";
     productCard.innerHTML = `<img src="../media/${producto.img}" alt="${producto.nombre} />
-    <div><h2><strong>${producto.nombre}</strong></h2>
+    <h2><strong>${producto.nombre}</strong></h2>
                             <p class="precio">$${producto.precio}</p>
                             <label for="quantity-${producto.nombre}">Cantidad:</label>
                             <input type="number" id="quantity-${producto.nombre}" name="quantity" min="1" value="1">
-                            <button onclick="agregarAlCarrito(\'${producto.nombre}\', ${producto.precio}, document.getElementById(\'quantity-${producto.nombre}\').value)">Agregar al carrito</button></div>                        
+                            <button onclick="agregarAlCarrito(\'${producto.nombre}\', ${producto.precio}, document.getElementById(\'quantity-${producto.nombre}\').value)">Agregar al carrito</button>                       
     `;
 
     productosContainer.appendChild(productCard);
