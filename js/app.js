@@ -54,7 +54,7 @@ function actualizarCarrito() {
 function finalizarCompra() {
   if (carrito.length >= 1) {
     alert("Finalizando la compra!");
-    window.location.href = "../html/formulario.html";
+    window.location.href = "html/formulario.html";
     carrito = [];
     actualizarCarrito();
   } else {
