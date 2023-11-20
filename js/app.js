@@ -76,7 +76,7 @@ function iniciaProductos() {
   productos.forEach((producto) => {
     let productCard = document.createElement("div");
     productCard.className = "product-card";
-    productCard.innerHTML = `<img src="../media/${producto.img}" alt="${producto.nombre}/>
+    productCard.innerHTML = `<img src="media/${producto.img}" alt="${producto.nombre}" />
                              <h2><strong>${producto.nombre}</strong></h2>
                              <p class="precio">$${producto.precio}</p>
                              <label for="quantity-${producto.nombre}">Cantidad:</label>
