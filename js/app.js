@@ -4,16 +4,24 @@ let carrito = [];
 function agregarAlCarrito(nombre, precio, cantidad) {
   let producto = { nombre: nombre, precio: precio, cantidad: cantidad };
 
-  carrito.push(producto);
+  if (cantidad > 0) {
+    carrito.push(producto);
 
-  localStorage.setItem("carrito", JSON.stringify(carrito));
+    console.log(carrito);
 
-  alert(`Producto agregado al carrito:
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    alert(`Producto agregado al carrito:
          ${producto.cantidad} - ${producto.nombre} - $${
-    producto.cantidad * producto.precio
-  } `);
+      producto.cantidad * producto.precio
+    } `);
 
-  actualizarCarrito();
+    actualizarCarrito();
+  } else {
+    alert(
+      `Ingrese una cantidad mayor que cero del producto: ${producto.nombre}`
+    );
+  }
 }
 
 // Elimina producto del carrito
@@ -44,10 +52,14 @@ function actualizarCarrito() {
 }
 
 function finalizarCompra() {
-  alert("Finalizando la compra!");
-  window.location.href = "../html/formulario.html";
-  carrito = [];
-  actualizarCarrito();
+  if (carrito.length >= 1) {
+    alert("Finalizando la compra!");
+    window.location.href = "../html/formulario.html";
+    carrito = [];
+    actualizarCarrito();
+  } else {
+    alert("No ha agregado productos en el carrito");
+  }
 }
 
 // Funcion que renderiza y muestra los productos en la web
