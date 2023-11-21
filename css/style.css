@@ -45,6 +45,11 @@ button {
   margin-top: 10px;
 }
 
+button a {
+  text-decoration: none;
+  color: #fff;
+}
+
 #carrito-container {
   align-content: center;
   width: auto;
