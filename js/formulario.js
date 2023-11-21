@@ -29,4 +29,5 @@ datosForm.addEventListener("submit", function (e) {
   datosForm.reset();
 
   alert(`Datos enviados. \nGracias ${cliente.nombre} ${cliente.apellido}.`);
+  window.location.href = "../index.html";
 });
