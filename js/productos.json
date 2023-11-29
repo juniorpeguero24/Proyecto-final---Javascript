@@ -1,0 +1,6 @@
+[
+    { "id": 2, "nombre": "Pantalon", "precio": 15000, "img": "jean.png" },
+    { "id": 1, "nombre": "Remera", "precio": 10000, "img": "remera.webp" },
+    { "id": 3, "nombre": "Zapatilla", "precio": 20000, "img": "zapatilla.png" },
+    { "id": 4, "nombre": "Buzo", "precio": 25000, "img": "buzo.png" }
+  ]
