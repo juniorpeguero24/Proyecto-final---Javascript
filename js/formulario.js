@@ -28,6 +28,13 @@ datosForm.addEventListener("submit", function (e) {
 
   datosForm.reset();
 
-  alert(`Datos enviados. \nGracias ${cliente.nombre} ${cliente.apellido}.`);
-  window.location.href = "../index.html";
+  Swal.fire({
+    title: "Datos enviados!",
+    text: `Gracias por tu compra ${nombre} ${apellido} \nNos estaremos comunicando mediante tu mail: ${mail}`,
+    icon: "question",
+    timer: 10 * 1000,
+    showConfirmButton: false,
+  }).then(() => {
+    window.location.href = "../index.html";
+  });
 });
