@@ -32,7 +32,7 @@ function agregarAlCarrito(nombre, precio, cantidad, img) {
         showConfirmButton: false,
         toast: true,
         timerProgressBar: true,
-        timer: 3 * 1000,
+        timer: 2 * 1000,
       });
     } else {
       Swal.fire({
@@ -58,7 +58,7 @@ function eliminarProducto(index, nombre, cantidad) {
     toast: true,
     showConfirmButton: false,
     timerProgressBar: true,
-    timer: 3 * 1000,
+    timer: 2 * 1000,
   }).then(() => {
     carrito.splice(index, 1);
     actualizarCarrito();
@@ -77,7 +77,7 @@ const actualizarCarrito = () => {
   try {
     carrito.forEach(function (producto, index) {
       productoEnCarrito = document.createElement("div");
-      productoEnCarrito.innerHTML = `<p><strong>${producto.nombre}</strong> - $${producto.precio} - Cantidad: ${producto.cantidad} <button class="eliminar" onclick="eliminarProducto(${index},'${producto.nombre}', ${producto.cantidad})">(X)</button></p>`;
+      productoEnCarrito.innerHTML = `<p class="card-text"><strong>${producto.nombre}</strong> - $${producto.precio} - Cantidad: ${producto.cantidad} <button class="eliminar" data-index="${index}" data-nombre="${producto.nombre}" data-cantidad="${producto.cantidad}"> X </button></p>`;
       carritoContainer.appendChild(productoEnCarrito);
 
       subtotalProducto = producto.precio * producto.cantidad;
@@ -87,6 +87,16 @@ const actualizarCarrito = () => {
     console.error("Se ha producido un error:", error);
   } finally {
     carritoContainer.innerHTML += `<p>Total de la compra: $${totalCompra}</p>`;
+
+    let botonesEliminar = document.querySelectorAll(".eliminar");
+    botonesEliminar.forEach(function (boton) {
+      boton.addEventListener("click", function () {
+        let index = this.getAttribute("data-index");
+        let nombre = this.getAttribute("data-nombre");
+        let cantidad = this.getAttribute("data-cantidad");
+        eliminarProducto(index, nombre, cantidad);
+      });
+    });
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
@@ -103,6 +113,8 @@ function finalizarCompra() {
       cancelButtonText: "Cancelar",
     }).then((btnResult) => {
       if (btnResult.isConfirmed) {
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+
         Swal.fire({
           title: "Finalizando la compra",
           text: "Sera redireccionado, se le pediran los datos para completar la compra.",
@@ -112,8 +124,8 @@ function finalizarCompra() {
           showConfirmButton: false,
         }).then(() => {
           window.location.href = "html/formulario.html";
-          carrito = [];
-          actualizarCarrito();
+          // carrito = [];
+          // actualizarCarrito();
         });
       } else {
         Swal.fire({
@@ -157,15 +169,17 @@ const iniciaProductos = async () => {
 
     productos.forEach((producto) => {
       let productCard = document.createElement("div");
-      productCard.className = "product-card";
-      productCard.innerHTML = `<img src="media/${producto.img}" alt="${producto.nombre}" />
-                                 <h2><strong>${producto.nombre}</strong></h2>
-                                 <p class="precio">Precio: $${producto.precio}</p>
-                                 <label for="quantity-${producto.nombre}">Cantidad:</label>
-                                 <input type="number" id="quantity-${producto.nombre}" name="quantity" min="1" value="1">
-                                 
-    `;
+      productCard.className = "product-card card text-center mb-3";
+      productCard.innerHTML = `<div class="card-body">
+                                  <img src="media/${producto.img}" class="card-img-top" alt="${producto.nombre}">
+                                  <h5 class="card-title">${producto.nombre}</h5>
+                                  <p class="card-text precio">Precio: $${producto.precio}</p>
+                                  <label for="quantity-${producto.nombre}">Cantidad:</label>
+                                  <input type="number" id="quantity-${producto.nombre}" name="quantity" min="0" value="1">
+                               </div>`;
+
       let agregarAlCarritoBtn = document.createElement("button");
+      agregarAlCarritoBtn.className = "btn btn-primary";
       agregarAlCarritoBtn.textContent = "Añadir al carrito";
       agregarAlCarritoBtn.addEventListener("click", () => {
         agregarAlCarrito(

@@ -5,35 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulario</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <div class="container">
-      <h2>Ingresa tus datos para finalizar la compra</h2>
+    <header>
+      <h1>Ingresa tus datos para finalizar la compra</h1>
+    </header>
+    <section id="formulario">
+      <section id="carrito-formulario-container">
+        <h2>Carrito</h2>
+      </section>
 
-      <form id="datosForm">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required />
-
-        <label for="apellido">Apellido:</label>
-        <input type="text" id="apellido" name="apellido" required />
-
-        <label for="mail">Mail:</label>
-        <input type="text" id="mail" name="mail" required />
-
-        <label for="telefono">Telefono:</label>
-        <input type="text" id="telefono" name="telefono" required />
-
-        <label for="direccion">Dirección:</label>
-        <input type="text" id="direccion" name="direccion" />
-
-        <label for="provincia">Provincia:</label>
-        <input type="text" id="provincia" name="provincia" />
-
-        <input type="submit" value="Enviar" />
+      <form id="datosForm" class="row g-3">
+        <div class="row">
+          <div class="col">
+            <label for="nombre">Nombre</label>
+            <input
+              id="nombre"
+              type="text"
+              class="form-control"
+              aria-label="Nombre"
+              required
+            />
+          </div>
+          <div class="col">
+            <label for="apellido">Apellido</label>
+            <input
+              id="apellido"
+              type="text"
+              class="form-control"
+              aria-label="Apellido"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="mail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="mail" required />
+        </div>
+        <div class="col-md-6">
+          <label for="telefono" class="form-label">Telefono</label>
+          <input type="text" class="form-control" id="telefono" required />
+        </div>
+        <div class="col-12">
+          <label for="direccion" class="form-label">Direccion</label>
+          <input type="text" class="form-control" id="direccion" />
+        </div>
+        <div class="col-md-6">
+          <label for="ciudad" class="form-label">Ciudad</label>
+          <input type="text" class="form-control" id="ciudad" />
+        </div>
+        <div class="col-md-4">
+          <label for="Provincia" class="form-label">Provincia</label>
+          <input type="text" class="form-control" id="provincia" />
+        </div>
+        <div class="col-md-2">
+          <label for="zip" class="form-label">CP</label>
+          <input type="text" class="form-control" id="zip" />
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="gridCheck"
+              required
+            />
+            <label class="form-check-label" for="gridCheck">
+              Acepto los terminos
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">
+            Confirmar Compra
+          </button>
+        </div>
       </form>
-    </div>
+    </section>
   </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"
+  ></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <!-- <script defer src="../js/app.js"></script> -->
   <script defer src="../js/formulario.js"></script>
 </html>

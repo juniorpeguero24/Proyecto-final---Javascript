@@ -1,3 +1,32 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  console.log(carrito);
+  mostrarCarritoEnFormulario(carrito);
+});
+
+function mostrarCarritoEnFormulario(carrito) {
+  const carritoFormularioContainer = document.getElementById(
+    "carrito-formulario-container"
+  );
+  carritoFormularioContainer.innerHTML = "<h2>Carrito</h2>";
+  let totalCompra = 0;
+  try {
+    carrito.forEach(function (producto) {
+      const subtotalProducto = producto.precio * producto.cantidad;
+      totalCompra += subtotalProducto;
+
+      const productoEnCarrito = document.createElement("div");
+      productoEnCarrito.innerHTML = `<p><strong>${producto.nombre}</strong> - Cantidad: ${producto.cantidad} - $${producto.precio} </p>`;
+      carritoFormularioContainer.appendChild(productoEnCarrito);
+    });
+  } catch (error) {
+    console.error("Ha ocurrido un error:", error);
+  } finally {
+    carritoFormularioContainer.innerHTML += `<p>Total de la compra: $${totalCompra}</p>`;
+  }
+}
+
 const datosForm = document.getElementById("datosForm");
 const clientes = [];
 
@@ -32,7 +61,8 @@ datosForm.addEventListener("submit", function (e) {
     title: "Datos enviados!",
     text: `Gracias por tu compra ${nombre} ${apellido} \nNos estaremos comunicando mediante tu mail: ${mail}`,
     icon: "question",
-    timer: 10 * 1000,
+    timer: 8 * 1000,
+    timerProgressBar: true,
     showConfirmButton: false,
   }).then(() => {
     window.location.href = "../index.html";
